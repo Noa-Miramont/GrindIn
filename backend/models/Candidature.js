@@ -17,7 +17,7 @@ const CandidatureSchema = new mongoose.Schema({
   },
   statut: {
     type: String,
-    enum: ['en_attente', 'entretien', 'refusé', 'accepté'],
+    enum: ['en_attente', 'refusé', 'accepté'],
     default: 'en_attente'
   },
   contact: {
