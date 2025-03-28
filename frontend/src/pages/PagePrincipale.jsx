@@ -1,9 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import CandidaturesList from "../component/CandidaturesList.jsx"
 import '../style/PagePrincipal.css'
 
 function PagePrincipal(){
+    const [filter, setFilter] = useState("all");
+    
+    const handleFilterChange = (newFilter) => {
+        setFilter(newFilter);
+    };
+
     return(
         <div>
             <div className="Header-Container">
@@ -12,6 +18,38 @@ function PagePrincipal(){
             <div className="Main">
                 <div className="Container">
                     <h2 className="Title">Liste des candidatures</h2>
+                    <div className="Filter-Container">
+                        <button 
+                            className={`Filter-Button ${filter === 'all' ? 'active' : ''}`}
+                            onClick={() => handleFilterChange('all')}
+                        >
+                            Toutes
+                        </button>
+                        <button 
+                            className={`Filter-Button ${filter === 'accepté' ? 'active' : ''}`}
+                            onClick={() => handleFilterChange('accepté')}
+                        >
+                            Acceptées
+                        </button>
+                        <button 
+                            className={`Filter-Button ${filter === 'en_attente' ? 'active' : ''}`}
+                            onClick={() => handleFilterChange('en_attente')}
+                        >
+                            En attente
+                        </button>
+                        <button 
+                            className={`Filter-Button ${filter === 'refusé' ? 'active' : ''}`}
+                            onClick={() => handleFilterChange('refusé')}
+                        >
+                            Refusées
+                        </button>
+                        <button 
+                            className={`Filter-Button ${filter === 'relances' ? 'active' : ''}`}
+                            onClick={() => handleFilterChange('relances')}
+                        >
+                            Relances ({'>'}1 semaine)
+                        </button>
+                    </div>
                     <div className="Table-Container">
                         <div className="Table-Header">
                             <div className="Cell-Header">Entreprise</div>
@@ -21,7 +59,7 @@ function PagePrincipal(){
                             <div className="Cell-Header">Date d'envoi</div>
                             <div className="Cell-Header-end"></div>
                         </div>
-                        <CandidaturesList />
+                        <CandidaturesList filterStatus={filter} />
                     </div>
             
                     <div className="New-Button-Container">

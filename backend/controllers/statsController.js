@@ -1,7 +1,7 @@
 // Contrôleur pour la gestion des statistiques 
 const Candidature = require('../models/Candidature');
 
-// Récupérer les statistiques globales (nombre total de candidatures)
+// Récupérer les statistiques globales
 exports.getGlobalStats = async (req, res) => {
   try {
     const totalCandidatures = await Candidature.countDocuments();

@@ -8,14 +8,21 @@ import LigneBlack from "./Ligne-Black";
 import LigneGrey from "./Ligne-Grey";
 import "../style/CandidaturesList.css";
 
-function CandidaturesList() {
+function CandidaturesList({ filterStatus = "all" }) {
     const [candidatures, setCandidatures] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchCandidatures = async () => {
             try {
-                const response = await axios.get(API_URL.CANDIDATURES.BASE);
+                let url;
+                if (filterStatus === "all") {
+                    url = API_URL.CANDIDATURES.BASE;
+                } else {
+                    url = API_URL.CANDIDATURES.WITH_FILTERS({ statut: filterStatus });
+                }
+                
+                const response = await axios.get(url);
                 setCandidatures(response.data);
             } catch (error) {
                 console.error("Error fetching candidatures:", error);
@@ -25,7 +32,7 @@ function CandidaturesList() {
         };
 
         fetchCandidatures();
-    }, []);
+    }, [filterStatus]);
 
     const handleDelete = async (id) => {
         try {

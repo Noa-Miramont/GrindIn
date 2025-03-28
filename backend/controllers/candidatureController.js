@@ -4,10 +4,21 @@ const Candidature = require('../models/Candidature');
 // Récupérer toutes les candidatures (avec filtres optionnels)
 exports.getCandidatures = async (req, res) => {
   try {
-    const { entreprise, statut } = req.query;
+    const { entreprise, statut, olderThanOneWeek } = req.query;
     const filter = {};
+    
     if (entreprise) filter.entreprise = entreprise;
     if (statut) filter.statut = statut;
+    
+    // Filter for candidatures older than one week
+    if (olderThanOneWeek === 'true') {
+      const oneWeekAgo = new Date();
+      oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+      filter.dateCandidature = { $lt: oneWeekAgo };
+      
+      // Supprime le filtre de statut si on cherche les relances
+      delete filter.statut;
+    }
 
     const candidatures = await Candidature.find(filter);
     res.json(candidatures);
@@ -19,10 +30,9 @@ exports.getCandidatures = async (req, res) => {
 // Créer une nouvelle candidature
 exports.createCandidature = async (req, res) => {
   try {
-    console.log('Données reçues:', req.body);
+    const { entreprise, poste, lienOffre, datePublication, dateCandidature } = req.body;
     
     // Vérification des champs requis
-    const { entreprise, poste, lienOffre, datePublication, dateCandidature } = req.body;
     if (!entreprise || !poste || !lienOffre || !datePublication || !dateCandidature) {
       return res.status(400).json({
         message: 'Tous les champs sont requis',
@@ -40,8 +50,7 @@ exports.createCandidature = async (req, res) => {
     await candidature.save();
     res.status(201).json(candidature);
   } catch (error) {
-    console.error('Erreur lors de la création:', error);
-    res.status(400).json({ message: error.message, details: error });
+    res.status(400).json({ message: error.message });
   }
 };
 
@@ -77,23 +86,3 @@ exports.deleteCandidature = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-// Filtrer les candidatures par statut
-exports.getCandidaturesByStatus = async (req, res) => {
-  try {
-    const candidatures = await Candidature.find({ statut: req.params.status });
-    res.json(candidatures);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-// Filtrer les candidatures par entreprise
-exports.getCandidaturesByEntreprise = async (req, res) => {
-  try {
-    const candidatures = await Candidature.find({ entreprise: req.params.entreprise });
-    res.json(candidatures);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-}; 

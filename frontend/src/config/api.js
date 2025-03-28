@@ -6,7 +6,25 @@ export const API_URL = {
     CANDIDATURES: {
         BASE: `${BASE_URL}/candidatures`,
         BY_ID: (id) => `${BASE_URL}/candidatures/${id}`,
-        BY_STATUS: (status) => `${BASE_URL}/candidatures/filter/status/${status}`,
-        BY_ENTREPRISE: (entreprise) => `${BASE_URL}/candidatures/filter/entreprise/${entreprise}`
+        WITH_FILTERS: (filters) => {
+            let url = `${BASE_URL}/candidatures`;
+            const params = new URLSearchParams();
+            
+            if (filters.statut && filters.statut !== 'relances') {
+                params.append('statut', filters.statut);
+            }
+            
+            if (filters.entreprise) {
+                params.append('entreprise', filters.entreprise);
+            }
+            
+            // Special filter for applications older than one week
+            if (filters.statut === 'relances') {
+                params.append('olderThanOneWeek', 'true');
+            }
+            
+            const queryString = params.toString();
+            return queryString ? `${url}?${queryString}` : url;
+        }
     }
 }; 

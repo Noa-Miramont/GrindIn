@@ -91,3 +91,30 @@ body {
     font-weight: bold;
     margin: 0;
 }
+
+.Filter-Container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.Filter-Button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.Filter-Button:hover {
+    background-color: #e0e0e0;
+}
+
+.Filter-Button.active {
+    background-color: #3d8bf8;
+    color: white;
+    border-color: #3d8bf8;
+}

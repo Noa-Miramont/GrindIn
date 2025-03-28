@@ -28,28 +28,7 @@ const CandidatureSchema = new mongoose.Schema({
     type: String,
     enum: ['accepté', 'refusé', 'en_attente'],
     default: 'en_attente'
-  },
-  contact: {
-    nom: String,
-    email: String,
-    telephone: String
-  },
-  notes: {
-    type: String,
-    trim: true
-  },
-  relances: [{
-    date: {
-      type: Date,
-      default: Date.now
-    },
-    moyen: {
-      type: String,
-      enum: ['email', 'téléphone', 'autre'],
-      required: true
-    },
-    notes: String
-  }]
+  }
 }, {
   timestamps: true,
   collection: 'candidatures'
