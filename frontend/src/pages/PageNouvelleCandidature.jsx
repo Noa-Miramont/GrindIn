@@ -134,26 +134,26 @@ function PageNouvelleCandidature(){
                                     />
                                 </li>
 
-                                <li>
+                                <li className="Date-Field">
+                                    <label htmlFor="datePublication">Date de publication de l'offre</label>
                                     <input 
                                         className="Date-Input" 
                                         type="date" 
                                         name="datePublication" 
                                         id="datePublication" 
-                                        placeholder="Date de publication de l'offre..."
                                         value={formData.datePublication}
                                         onChange={handleChange}
                                         required
                                     />
                                 </li>
 
-                                <li>
+                                <li className="Date-Field">
+                                    <label htmlFor="dateCandidature">Date d'envoi de la candidature</label>
                                     <input 
                                         className="Date-Input" 
                                         type="date" 
                                         name="dateCandidature" 
                                         id="dateCandidature" 
-                                        placeholder="Date de candidature..."
                                         value={formData.dateCandidature}
                                         onChange={handleChange}
                                         required

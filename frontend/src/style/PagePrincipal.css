@@ -118,3 +118,101 @@ body {
     color: white;
     border-color: #3d8bf8;
 }
+
+/* Styles pour la section Statistiques */
+.Stats-Container {
+    margin-bottom: 2rem;
+}
+
+.Stats-Cards-Container {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.Stats-Card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 250px;
+}
+
+.Stats-Card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.Stats-Number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: #007bff;
+}
+
+.Stats-Status-Container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.Stats-Status-Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Stats-Status-Badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.Stats-Status-Badge.accepté {
+    background-color: rgba(39, 174, 96, 0.1);
+    color: #27AE60;
+}
+
+.Stats-Status-Badge.refusé {
+    background-color: rgba(235, 87, 87, 0.1);
+    color: #EB5757;
+}
+
+.Stats-Status-Badge.en_attente {
+    background-color: rgba(242, 153, 74, 0.1);
+    color: #F2994A;
+}
+
+.Stats-Status-Count {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.Stats-Monthly-Container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.Stats-Monthly-Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.Stats-Monthly-Month {
+    color: #333;
+    font-weight: 500;
+}
+
+.Stats-Monthly-Count {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #007bff;
+}

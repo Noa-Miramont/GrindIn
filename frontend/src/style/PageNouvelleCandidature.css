@@ -54,6 +54,21 @@ li {
     border-radius: 24px;
 }
 
+.Date-Field {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.Date-Field label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #606060;
+    padding-left: 10px;
+}
+
 .Date-Input {
     width: 500px;
     height: 75px;
@@ -61,7 +76,14 @@ li {
     border-color: #606060;
     background-color: transparent;
     border-radius: 24px;
+    padding-left: 50px !important;
+    color: #606060;
+}
 
+.Date-Input::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+    cursor: pointer;
+    margin-right: 20px;
 }
 
 .Submit-Container {

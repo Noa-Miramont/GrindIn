@@ -1,14 +1,43 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
 import CandidaturesList from "../component/CandidaturesList.jsx"
+import { API_URL } from "../config/api"
 import '../style/PagePrincipal.css'
 
 function PagePrincipal(){
     const [filter, setFilter] = useState("all");
+    const [stats, setStats] = useState({
+        global: { totalCandidatures: 0 },
+        byStatus: []
+    });
+    const [loading, setLoading] = useState(true);
     
     const handleFilterChange = (newFilter) => {
         setFilter(newFilter);
     };
+
+    useEffect(() => {
+        const fetchStats = async () => {
+            try {
+                const [globalStats, statusStats] = await Promise.all([
+                    axios.get(`${API_URL.BASE}/stats/global`),
+                    axios.get(`${API_URL.BASE}/stats/par-statut`)
+                ]);
+                
+                setStats({
+                    global: globalStats.data,
+                    byStatus: statusStats.data
+                });
+            } catch (error) {
+                console.error("Erreur lors de la récupération des statistiques:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        
+        fetchStats();
+    }, []);
 
     return(
         <div>
@@ -16,6 +45,34 @@ function PagePrincipal(){
                 <img src="../../static/Logo.svg" alt="Logo" />
             </div>
             <div className="Main">
+                {/* Section Statistiques */}
+                <div className="Container Stats-Container">
+                    <h2 className="Title">Statistiques</h2>
+                    <div className="Stats-Cards-Container">
+                        <div className="Stats-Card">
+                            <h3>Total des candidatures</h3>
+                            <p className="Stats-Number">{stats.global.totalCandidatures}</p>
+                        </div>
+                        
+                        <div className="Stats-Card">
+                            <h3>Par statut</h3>
+                            <div className="Stats-Status-Container">
+                                {stats.byStatus.map(stat => (
+                                    <div key={stat._id || "inconnu"} className="Stats-Status-Item">
+                                        <span className={`Stats-Status-Badge ${stat._id}`}>
+                                            {stat._id === "accepté" ? "Acceptées" : 
+                                             stat._id === "refusé" ? "Refusées" :
+                                             stat._id === "en_attente" ? "En attente" : stat._id}
+                                        </span>
+                                        <span className="Stats-Status-Count">{stat.count}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Section Liste des candidatures */}
                 <div className="Container">
                     <h2 className="Title">Liste des candidatures</h2>
                     <div className="Filter-Container">
