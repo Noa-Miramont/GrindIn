@@ -1,0 +1,15 @@
+.candidatures-list {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: visible;
+    position: relative;
+}
+
+.candidatures-empty {
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    font-size: 18px;
+    color: #888;
+} 

@@ -19,11 +19,29 @@ exports.getCandidatures = async (req, res) => {
 // Créer une nouvelle candidature
 exports.createCandidature = async (req, res) => {
   try {
+    console.log('Données reçues:', req.body);
+    
+    // Vérification des champs requis
+    const { entreprise, poste, lienOffre, datePublication, dateCandidature } = req.body;
+    if (!entreprise || !poste || !lienOffre || !datePublication || !dateCandidature) {
+      return res.status(400).json({
+        message: 'Tous les champs sont requis',
+        missingFields: {
+          entreprise: !entreprise,
+          poste: !poste,
+          lienOffre: !lienOffre,
+          datePublication: !datePublication,
+          dateCandidature: !dateCandidature
+        }
+      });
+    }
+    
     const candidature = new Candidature(req.body);
     await candidature.save();
     res.status(201).json(candidature);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error('Erreur lors de la création:', error);
+    res.status(400).json({ message: error.message, details: error });
   }
 };
 

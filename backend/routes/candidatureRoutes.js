@@ -15,6 +15,36 @@ router.get('/', candidatureController.getCandidatures);
 // POST /api/candidatures - Créer une nouvelle candidature
 router.post('/', candidatureController.createCandidature);
 
+// Route de test pour créer une candidature avec des données prédéfinies
+router.get('/test-create', async (req, res) => {
+  try {
+    const Candidature = require('../models/Candidature');
+    
+    const testData = {
+      entreprise: "Entreprise Test",
+      poste: "Développeur Test",
+      lienOffre: "https://example.com/job",
+      datePublication: new Date(),
+      dateCandidature: new Date(),
+      statut: "pending"
+    };
+    
+    const candidature = new Candidature(testData);
+    await candidature.save();
+    
+    res.status(201).json({
+      message: "Candidature de test créée avec succès",
+      candidature
+    });
+  } catch (error) {
+    console.error('Erreur lors du test:', error);
+    res.status(400).json({ 
+      message: error.message,
+      stack: error.stack
+    });
+  }
+});
+
 // GET /api/candidatures/:id - Récupérer une candidature spécifique
 router.get('/:id', candidatureController.getCandidatureById);
 

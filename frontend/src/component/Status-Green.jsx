@@ -3,9 +3,9 @@ import '../style/Status-Green.css'
 
 function StatusGreen(){
     return(
-        <div className="Aprouved-Container">
-            <div className="Approuved-Icon"></div>
-            <p>Approuved</p>
+        <div className="Approved-Container">
+            <div className="Approved-Icon"></div>
+            <p>Accepté</p>
         </div>
     )
 }

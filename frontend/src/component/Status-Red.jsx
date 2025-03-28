@@ -5,7 +5,7 @@ function StatusRed(){
     return(
         <div className="Denied-Container">
             <div className="Denied-Icon"></div>
-            <p>Approuved</p>
+            <p>Refusé</p>
         </div>
     )
 }

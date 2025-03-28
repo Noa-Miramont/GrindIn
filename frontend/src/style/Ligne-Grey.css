@@ -6,6 +6,9 @@
     font-family: Arial, sans-serif;
     font-weight: bold;
     font-size: 16px;
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
 }
 
 .Cell-g {
@@ -15,7 +18,13 @@
     border-right: solid;
     background-color: #444;
     border-color: white;
-    padding: 15px 30px 15px 30px
+    padding: 15px 30px;
+    margin: 0;
+}
+
+.Cell-g a {
+    color: white;
+    text-decoration: underline;
 }
 
 .Cell-end-g {
@@ -24,6 +33,11 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin: 0;
+    padding: 15px 30px;
+    background-color: #444;
+    position: relative;
+    overflow: visible;
 }
 
 .icon {
@@ -34,4 +48,79 @@
     border: solid;
     border-color: white;
     border-radius: 9px;
+}
+
+/* Styles pour le menu de statut */
+.status-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    width: 200px;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease;
+}
+
+.status-menu-header {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #333;
+    border-bottom: 1px solid #444;
+    text-align: center;
+    color: white;
+}
+
+.status-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: white;
+}
+
+.status-option:hover {
+    background-color: #333;
+}
+
+.status-option.active {
+    background-color: #3a3a3a;
+}
+
+.status-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-color.pending {
+    background-color: #FF9800;
+}
+
+.status-color.accepted {
+    background-color: #4CAF50;
+}
+
+.status-color.rejected {
+    background-color: #F44336;
+}
+
+.status-option span {
+    color: white;
+    font-weight: normal;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

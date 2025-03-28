@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const errorHandler = require('./middlewares/errorHandler');
 const apiRoutes = require('./routes/api');
+const cors = require('cors');
 
 // Chargement des variables d'environnement
 dotenv.config();
@@ -11,6 +12,9 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// Middleware CORS
+app.use(cors());
 
 // Middleware pour parser le JSON
 app.use(express.json());

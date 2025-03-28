@@ -26,8 +26,9 @@ body {
 
 .Table-Container {
     margin-bottom: 25px;
+    border-radius: 12px 12px 0 0;
+    overflow: visible;
 }
-
 
 .Table-Header {
     display: grid;
@@ -38,6 +39,8 @@ body {
     font-weight: bold;
     font-size: 16px;
     border-radius: 12px 12px 0 0;
+    margin: 0;
+    padding: 0;
 }
 
 .Cell-Header {
@@ -46,7 +49,16 @@ body {
     align-items: center;
     border-right: solid;
     border-color: white;
-    padding: 15px 30px 15px 30px
+    padding: 15px 30px;
+    margin: 0;
+}
+
+.Cell-Header-end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    margin: 0;
 }
 
 .New-Button-Container {

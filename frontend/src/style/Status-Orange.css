@@ -1,23 +1,23 @@
-.Approved-Container {
+.Pending-Container {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 4px 8px;
-    background-color: #E8F5E9;
+    background-color: #FFF3E0;
     border-radius: 4px;
     width: fit-content;
 }
 
-.Approved-Icon {
+.Pending-Icon {
     width: 8px;
     height: 8px;
-    background-color: #4CAF50;
+    background-color: #FF9800;
     border-radius: 50%;
 }
 
-.Approved-Container p {
+.Pending-Container p {
     margin: 0;
-    color: #4CAF50;
+    color: #FF9800;
     font-size: 14px;
     font-weight: 500;
-}
+} 

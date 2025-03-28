@@ -11,13 +11,22 @@ const CandidatureSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  datePostulation: {
+  lienOffre: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  datePublication: {
     type: Date,
-    default: Date.now
+    required: true
+  },
+  dateCandidature: {
+    type: Date,
+    required: true
   },
   statut: {
     type: String,
-    enum: ['en_attente', 'refusé', 'accepté'],
+    enum: ['accepté', 'refusé', 'en_attente'],
     default: 'en_attente'
   },
   contact: {
@@ -42,7 +51,8 @@ const CandidatureSchema = new mongoose.Schema({
     notes: String
   }]
 }, {
-  timestamps: true
+  timestamps: true,
+  collection: 'candidatures'
 });
 
 module.exports = mongoose.model('Candidature', CandidatureSchema); 
