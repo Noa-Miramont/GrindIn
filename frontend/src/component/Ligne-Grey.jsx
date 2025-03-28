@@ -23,10 +23,10 @@ function LigneGrey({ candidature, getStatusComponent, onDelete }){
     
     return(
         <div className="Table-Lign">
-            <div className="Cell-g">{candidature.entreprise}</div>
+            <div className="Cell-g" data-content={candidature.entreprise}>{candidature.entreprise}</div>
             <div className="Cell-g">{getStatusComponent(candidature.statut)}</div>
-            <div className="Cell-g">{candidature.poste}</div>
-            <div className="Cell-g">
+            <div className="Cell-g" data-content={candidature.poste}>{candidature.poste}</div>
+            <div className="Cell-g" data-content={candidature.lienOffre}>
                 <a href={candidature.lienOffre} target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
                     Voir l'offre
                 </a>

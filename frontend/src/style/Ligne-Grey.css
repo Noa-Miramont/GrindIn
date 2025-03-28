@@ -20,6 +20,11 @@
     border-color: white;
     padding: 15px 30px;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    position: relative;
 }
 
 .Cell-g a {
@@ -123,4 +128,21 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.Cell-g:hover::after {
+    content: attr(data-content);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1;
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: normal;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    word-break: break-word;
+    font-size: 14px;
 }
