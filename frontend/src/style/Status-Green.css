@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.Aprouved-Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: min-contents;
+}
+
+.Approuved-Icon {
+    background-color: #57BA27;
+    border-radius: 100%;
+    width: 12px;
+    height: 12px;
+}
+
+p {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 16;
+}

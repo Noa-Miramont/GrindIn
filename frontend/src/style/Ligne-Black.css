@@ -1,0 +1,39 @@
+.Table-Lign {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: #000000;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.Cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid;
+    background-color: #000000;
+    border-color: white;
+    padding: 15px 30px 15px 30px
+}
+
+.Cell-end {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #000000;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    border: solid;
+    border-color: white;
+    border-radius: 9px;
+    cursor: pointer;
+}

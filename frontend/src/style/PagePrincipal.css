@@ -1,0 +1,81 @@
+body {
+    background-color: black;
+}
+
+.Header-Container {
+    display: flex;
+    justify-content: center;
+}
+
+.Main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container {
+    width: 1000px;
+}
+
+.Title {
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+.Table-Container {
+    margin-bottom: 25px;
+}
+
+
+.Table-Header {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background: #444;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 12px 12px 0 0;
+}
+
+.Cell-Header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid;
+    border-color: white;
+    padding: 15px 30px 15px 30px
+}
+
+.New-Button-Container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.New-Button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: min-content;
+    height: min-content;
+    background-color: #F7981D;
+    border-radius: 15px;
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: flex-end;
+    text-decoration: none;
+}
+
+.Text-Button {
+    color: rgb(0, 0, 0);
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
